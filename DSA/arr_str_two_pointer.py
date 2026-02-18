@@ -282,7 +282,30 @@ def is_palindrome(s):
 """
 
 def closest_pair(nums: list, target: int) -> list:
-    pass
+    left = 0
+    right = len(nums) - 1
+    best_diff = float("inf")
+    best_pair = None
+    while left < right:
+        current_sum = nums[left] + nums[right]
+        current_diff = abs(current_sum - target)
+        
+        if current_diff < best_diff:
+            best_diff = current_diff
+            best_pair = [nums[left], nums[right]]
+            
+        elif current_diff == best_diff:
+            if nums[left] < best_pair[0]:
+                best_pair = [nums[left], nums[right]]
+                
+        if nums[left] + nums[right] < target:
+            left += 1
+        elif nums[left] + nums[right] > target:
+            right -= 1
+        else: # difference is 0
+            return [nums[left], nums[right]]
+    return best_pair            
 
-
-print(closest_pair(nums = [2, 5, 6, 8, 9], target = 14))
+nums = [1, 3, 4, 7, 10]
+target = 15
+print(closest_pair(nums = nums, target = target))
