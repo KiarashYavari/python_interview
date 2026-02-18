@@ -309,3 +309,14 @@ def closest_pair(nums: list, target: int) -> list:
 nums = [1, 3, 4, 7, 10]
 target = 15
 print(closest_pair(nums = nums, target = target))
+
+"""🔥 Hard Question for You Now
+
+    Do we even need the tie-break logic?
+
+    Or can we prove that the two-pointer traversal guarantees smallest-left automatically?
+
+    Think about pointer movement carefully.
+
+    This is the level where interviews get interesting 😄
+"""
