@@ -234,6 +234,7 @@ def min_subarray_len(target, nums):
 
 # 🚨 90% chance it’s sliding window.
 
+
 """
     🧪 Assessment Problem — Sliding Window (Medium)
     🔐 API Rate Limiter
@@ -295,3 +296,19 @@ timestamps = [1, 2, 3, 4]
 # tips:
 # 🧠 Think Before Coding
 # Take 10–15 minutes and implement it.
+
+def rate_limit_check(k: int, window: int, timestamps: list[int]) -> bool:
+    left = 0
+
+    for right in range(len(timestamps)):
+        # shrink window if outside allowed time
+        while timestamps[right] - timestamps[left] >= window:
+            left += 1
+
+        # number of requests in current window
+        if right - left + 1 > k:
+            return False
+
+    return True
+
+print(rate_limit_check(k = 3, window = 5, timestamps = [1, 4, 5, 6]))
