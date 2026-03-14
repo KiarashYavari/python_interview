@@ -454,3 +454,95 @@ def subarray_sum(nums, k):
 # Binary Subarrays With Sum
 
 # All same pattern. Only small modification.
+
+"""
+    🧪 Assessment Question — Prefix Sum
+    Problem: Count Subarrays With Target Sum
+
+    You are given an integer array nums and an integer k.
+
+    Return the total number of continuous subarrays whose sum equals k.
+
+    A subarray is a contiguous part of the array.
+"""
+
+"""
+    Example 1
+    Input:
+    nums = [1, 1, 1]
+    k = 2
+
+    Output:
+    2
+
+
+    Explanation:
+
+    [1,1] (index 0-1)
+    [1,1] (index 1-2)
+    
+    Example 2
+    Input:
+    nums = [1, 2, 3]
+    k = 3
+
+    Output:
+    2
+
+
+    Explanation:
+
+    [1,2]
+    [3]
+
+    Example 3
+    Input:
+    nums = [3, 4, 7, 2, -3, 1, 4, 2]
+    k = 7
+
+    Output:
+    4
+
+
+    Subarrays:
+
+    [3,4]
+    [7]
+    [7,2,-3,1]
+    [1,4,2]
+
+"""
+
+# 📌 Constraints
+# 1 ≤ nums.length ≤ 20,000
+# -1000 ≤ nums[i] ≤ 1000
+# -10^7 ≤ k ≤ 10^7
+
+
+# Important detail:
+
+# ⚠️ Negative numbers exist, which means:
+
+# ❌ Sliding window will NOT work
+# ✅ Prefix Sum + HashMap is required
+
+def count_subarr_to_target(nums: list, k: int) -> int:
+    prefix_sum = 0
+    prefix_count = {0:1}
+    count = 0
+    
+    for index in range(len(nums)):
+        # calculating the sum of arr intgers
+        prefix_sum += nums[index]
+        if prefix_sum - k in prefix_count:
+            # count the subarray that are equal to k
+            count += prefix_count[prefix_sum - k]
+            
+        # frequency arr counting   
+        prefix_count[prefix_sum] = prefix_count.get(prefix_sum, 0) + 1
+        
+    # print("prefix_sum: ", prefix_sum)
+    # print("prefix_count: ", prefix_count)
+    return count
+           
+print(count_subarr_to_target(nums = [1, 2, 3], k=3))
