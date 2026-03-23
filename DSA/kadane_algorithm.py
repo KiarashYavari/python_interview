@@ -194,3 +194,123 @@ def max_subarray(nums):
 # 4️⃣ Maximum Sum Rectangle in Matrix (2D Kadane)
 
 # 5️⃣ Stock Profit variants
+
+
+#Interview Variations (VERY common)
+
+# Once you understand Kadane, these appear everywhere.
+
+# 1️⃣ Return the subarray itself
+
+# Not just the sum.
+
+# 2️⃣ Maximum product subarray
+
+# Harder variation.
+
+# 3️⃣ Circular maximum subarray
+
+# Example:
+
+# [5, -3, 5] → answer = 10
+# 4️⃣ 2D Kadane (Maximum sum rectangle in matrix)-> Common in senior interviews.
+
+"""
+    🧠 Assessment Problem — Maximum Subarray With Indices
+
+    You are given an integer array nums.
+
+    Return:
+
+    the maximum subarray sum
+    the start index
+    the end index
+
+    of the contiguous subarray that produces that maximum sum.
+
+    If multiple answers exist, return the one with the smallest starting index.
+
+    Example
+    nums = [-2,1,-3,4,-1,2,1,-5,4]
+
+    Output
+
+    sum = 6
+    start = 3
+    end = 6
+
+    Because the best subarray is:
+
+    [4, -1, 2, 1]
+
+    Indexes:
+
+    3 → 6
+    Constraints
+
+    Typical assessment constraints:
+
+    1 ≤ len(nums) ≤ 10^5
+    -10^4 ≤ nums[i] ≤ 10^4
+
+    Expected complexity:
+
+    Time:  O(n)
+    Space: O(1)
+
+    Brute force O(n²) will fail.
+"""
+
+def max_subarr(nums):
+    current_sum = nums[0]
+    max_sum = nums[0]
+
+    start = 0
+    end = 0
+    temp_start = 0
+
+    for i in range(1, len(nums)):
+        # decide whether to restart
+        if nums[i] > current_sum + nums[i]:
+            current_sum = nums[i]
+            temp_start = i
+        else:
+            current_sum += nums[i]
+
+        # update global max
+        if current_sum > max_sum:
+            max_sum = current_sum
+            start = temp_start
+            end = i
+
+    return (max_sum, start, end)
+
+print(max_subarr([-5, -1, -8]))
+# input >>> [3, -2, 5, -1] output >>> (6, 0, 2)
+# input >>> [-2,1,-3,4,-1,2,1,-5,4] output >>> (6, 2, 6)
+# input >>> [-5, -1, -8] output >> (-1, 1, 1)
+
+# Example 2
+# nums = [3, -2, 5, -1]
+
+# Output
+
+# sum = 6
+# start = 0
+# end = 2
+
+# Subarray:
+# [3, -2, 5]
+
+
+# Example 3 (Important Edge Case)
+# nums = [-5, -1, -8]
+
+# Output
+
+# sum = -1
+# start = 1
+# end = 1
+
+# Because the best subarray is:
+# [-1]       
