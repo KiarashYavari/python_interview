@@ -286,6 +286,119 @@
 
 # ---
 
-# If you want, next step I can:
-# 👉 Give you **5 real interview problems** (like assessments) specifically on sorting tricks
-# 👉 Or review your solution step-by-step like an interviewer
+# 🔷 What is “Greedy Iteration”?
+# 👉 A greedy algorithm means:
+# At each step, pick the best immediate (local) choice
+# and never go back to change it.
+# You iterate through data and lock in decisions on the fly.
+
+# 🔷 Simple Intuition
+# Imagine:
+# You’re picking items
+# At each step, you choose what looks best right now
+# You don’t reconsider previous picks
+# 👉 No backtracking
+# 👉 No trying all combinations
+# 👉 Just move forward
+# 🔷 Why Sorting is Used with Greedy
+# Greedy often works only after sorting, because:
+# Sorting creates a meaningful order
+# That order guarantees your local decision is safe
+
+# 🔷 Classic Example: Meeting Scheduling
+# Problem:
+# You have meetings with start/end times.
+# 👉 Maximize number of meetings you can attend.
+
+# Greedy Strategy
+# 👉 Sort by end time
+# 👉 Always pick the meeting that finishes earliest
+# Why?
+# Because it leaves maximum room for future meetings
+
+intervals.sort(key=lambda x: x[1])  # sort by end time
+
+count = 0
+end = float('-inf')
+
+for start, finish in intervals:
+    if start >= end:
+        count += 1
+        end = finish
+
+# Key Insight
+# ❌ Don’t pick longest meeting
+# ❌ Don’t try all combinations
+# ✅ Just pick the earliest finishing one — always
+
+# 🔷 Real-World Examples
+# 🗓️ 1. Calendar Scheduling (Google Calendar)
+# You want to attend as many meetings as possible
+# System chooses:
+# 👉 Meetings that end earliest
+# Why greedy works:
+# Early finish → more room for next events
+        
+# 💰 2. Making Change (Cash System)
+# Problem:
+# Return $87 using bills: 50, 20, 10, 5, 1
+# Greedy:
+# Take largest bill first:
+# 50 → remaining 37
+# 20 → remaining 17
+# 10 → remaining 7
+# 5 → remaining 2
+# 1 → remaining 0
+# 👉 Always pick biggest possible
+# ⚠️ Note: Works only for certain currency systems
+
+        
+# 📦 3. Shipping / Packing
+# You want to fit items into a box
+# Strategy:
+# 👉 Pick smallest/lightest items first
+# OR
+# 👉 Pick highest value first
+# Used in:
+# Logistics
+# Warehouse optimization
+        
+# 🌐 4. Network Routing (Simplified Idea)
+# Choose shortest available path step-by-step
+# Used in algorithms like:
+# 👉 Dijkstra (a form of greedy)
+        
+# 🎯 5. Job Scheduling for Profit
+# Jobs have deadlines + profit
+# Strategy:
+# 👉 Do highest profit jobs first (after sorting)
+# 🔷 When Does Greedy Work?
+# Greedy works when:
+# ✅ 1. Local choice = global optimum
+# Your small decision leads to overall best result
+# ✅ 2. Problem has structure (after sorting)
+# Sorting makes decisions safe
+
+# 🔴 When Greedy FAILS
+# Important for interviews:
+# Greedy fails when:
+# Future decisions depend on past choices
+# You need to explore combinations
+# 👉 Example:
+# Knapsack (0/1 version) → needs DP, not greedy
+
+# 🔷 How to Recognize Greedy Problems
+# Look for phrases like:
+# “Maximum number of…”
+# “Minimum cost…”
+# “Non-overlapping…”
+# “Earliest / smallest / largest…”
+# “At each step…”
+# 👉 Big hint: You can make a decision and never revisit it
+
+# 🔷 Mental Model (Very Important)
+# Think:
+# “If I choose the best option right now,
+# will I regret it later?”
+# If NO → greedy works ✅
+# If YES → need DP/backtracking ❌
