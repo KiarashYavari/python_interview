@@ -402,3 +402,29 @@ for start, finish in intervals:
 # will I regret it later?”
 # If NO → greedy works ✅
 # If YES → need DP/backtracking ❌
+
+# assessment type greedy technique practice
+# 🧠 Problem: Maximum Number of Non-Overlapping Meetings
+# 📝 Problem Statement
+# You are given a list of meeting time intervals:
+# intervals = [[start1, end1], [start2, end2], ...]
+# 👉 Return the maximum number of non-overlapping meetings you can attend.
+# 📌 Example
+# intervals = [[1,3], [2,4], [3,5], [0,6], [5,7]]
+# 👉 Output:
+# 3
+# 🎯 Real-World Context
+# Think of:
+# 📅 Calendar scheduling (Google Calendar)
+# 🧑‍💼 Attending meetings without conflicts
+# 🖥️ CPU scheduling tasks
+
+# 🚫 Brute Force Thinking (Wrong Path)
+# Try all combinations → O(2ⁿ) 😬
+# Not acceptable in interviews
+# ✅ Greedy Insight (KEY)
+# 👉 Always pick the meeting that ends earliest
+# Why?
+# It leaves the most room for future meetings.
+
+
