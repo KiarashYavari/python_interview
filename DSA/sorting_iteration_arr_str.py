@@ -427,4 +427,77 @@ for start, finish in intervals:
 # Why?
 # It leaves the most room for future meetings.
 
+def max_meetings(intervals: list[list[int]]) -> int:
+    if not intervals:
+        return 0
+    intervals.sort(key=lambda x: x[1])
+    start = intervals[0][0]
+    end = intervals[0][1]
+    count = 1
+    for index in range(1, len(intervals)):
+        if end <= intervals[index][0]:
+            count +=1
+            end = intervals[index][1]
+    
+    return count
 
+print(max_meetings([[1,10], [2,3], [4,5], [6,7]]))
+#--------------------------------
+#--------------------------------
+
+# 🧪 Core Test Cases
+# ✅ 1. Basic overlapping
+# intervals = [[1,3], [2,4], [3,5], [0,6], [5,7]]
+# # Expected: 3
+# ✅ 2. No overlaps at all
+# intervals = [[1,2], [2,3], [3,4], [4,5]]
+# # Expected: 4
+# 👉 Tests: end == start allowed
+# ❌ 3. All overlapping
+# intervals = [[1,5], [2,6], [3,7], [4,8]]
+# # Expected: 1
+# 👉 Only one can be chosen
+# ⚠️ 4. Same end times
+# intervals = [[1,4], [2,4], [3,4]]
+# # Expected: 1
+# 👉 Sorting stability shouldn’t break logic
+# ⚠️ 5. Same start times
+# intervals = [[1,2], [1,3], [1,4]]
+# # Expected: 1
+# 👉 Should pick shortest (ends earliest)
+# 🧠 6. Unsorted input (IMPORTANT)
+# intervals = [[5,7], [1,3], [3,5], [2,4]]
+# # Expected: 3
+# 👉 Ensures you actually sort
+# ⚠️ 7. Nested intervals
+# intervals = [[1,10], [2,3], [4,5], [6,7]]
+# # Expected: 3
+# 👉 Greedy must avoid large interval
+# ⚠️ 8. Single interval
+# intervals = [[1,2]]
+# # Expected: 1
+# ⚠️ 9. Empty input
+# intervals = []
+# # Expected: 0
+# ⚠️ 10. Negative times
+# intervals = [[-5,-3], [-2,0], [-4,-1]]
+# # Expected: 2
+# 👉 Tests general robustness
+# 🔥 11. Tricky ordering case (INTERVIEW FAVORITE)
+# intervals = [[1,4], [2,3], [3,5]]
+# # Expected: 2
+# 👉 Correct pick:
+# [2,3]
+# [3,5]
+# ❌ Wrong greedy (if sorted by start):
+# picks [1,4] → ruins solution
+# 🔥 12. Many tiny vs one big
+# intervals = [[1,100], [2,3], [3,4], [4,5], [5,6]]
+# # Expected: 4
+# 👉 Must skip large interval
+# ⚠️ 13. Duplicate intervals
+# intervals = [[1,3], [1,3], [1,3]]
+# # Expected: 1
+# 🔥 14. Boundary touching chain
+# intervals = [[1,2], [2,3], [3,4], [1,3]]
+# # Expected: 3
