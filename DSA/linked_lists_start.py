@@ -18,3 +18,21 @@ def linked_list_to_list(head):
     return result
 
 print(linked_list_to_list(node1))
+
+def reverse_linked_list(head):
+      current = head
+      previous = None
+      while current:
+        # reverse
+        next_node = current.next
+        current.next = previous
+        # move current
+        previous = current
+        current = next_node
+        
+      return previous
+
+node1 = reverse_linked_list(node1)
+
+print(node1.val)
+print(node1.next.val)
