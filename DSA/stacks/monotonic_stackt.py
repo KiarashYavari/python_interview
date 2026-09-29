@@ -15,3 +15,4 @@ def next_greater_elements(nums: list[int]) -> list[int]:
   return result
 print(next_greater_elements(nums))
 # This is called a monotonic decreasing stack because, conceptually, we keep useful candidates in decreasing order.
+
