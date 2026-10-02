@@ -28,7 +28,7 @@ def serve_customer(customers: list[str]) -> str:
     return queue.popleft()
 # --------------------------------------------
 # Serve All Customers
-def serve_customer(customers: list[str]) -> str:
+def serve_customer(customers: list[str]) -> list[str]:
     queue = deque(customers)
     serve = []
     # your code
