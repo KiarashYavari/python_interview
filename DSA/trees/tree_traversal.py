@@ -29,4 +29,35 @@ def preorder(node):
     dfs(node)
     return result
     
-print(preorder(root2))
+# print(preorder(root2))
+#----------------------------
+# Inorder traversal > Left → Node → Right
+# For the same tree, expected output is: ["D", "B", "A", "C"]
+def inorder(node):
+    result = []
+    
+    def dfs(node):
+        if node is None:
+            return
+        dfs(node.left)
+        result.append(node.val)
+        dfs(node.right)
+    
+    dfs(node)
+    return result
+    
+# print(inorder(root2))
+#--------------------------------
+# postorder: Left → Right → Node
+# ["D", "B", "C", "A"]
+def postorder(node):
+    result = []
+    def dfs(node):
+        if node is None:
+            return
+        dfs(node.left)
+        dfs(node.right)
+        result.append(node.val)
+    dfs(node)
+    return result
+print(postorder(root2))
