@@ -1,4 +1,4 @@
-Great question — especially since you're actively preparing for assessments (like Walmart, Pure Storage, etc.). I’ll give you a **focused, high-ROI DSA roadmap** tailored for technical interviews and coding assessments.
+I’ll give you a **focused, high-ROI DSA roadmap** tailored for technical interviews and coding assessments.
 
 This is not “learn everything.”
 This is **what actually gets asked**.
