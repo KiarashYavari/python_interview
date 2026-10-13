@@ -39,6 +39,7 @@ print(kth_smallest(root, 1))
 # Here, n is the number of nodes and h is the tree height.
 # We use O(n) space for the result list and O(h) for the recursive call stack.
 #--------------------------------------------------------------------------
+# difference between collecting all traversal results and stopping when you've found what you need >>>
 #--------optimized solution with while and explicit stack -----------------
 def kth_smallest(root, k):
     stack = []
