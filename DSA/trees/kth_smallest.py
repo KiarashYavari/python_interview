@@ -31,3 +31,34 @@ def kth_smallest(root, k):
     return None
 
 print(kth_smallest(root, 1))
+# Complexity
+# Metric	Your solution
+# Time	    O(n)
+# Space	    O(n + h) = O(n)
+
+# Here, n is the number of nodes and h is the tree height.
+# We use O(n) space for the result list and O(h) for the recursive call stack.
+#--------------------------------------------------------------------------
+#--------optimized solution with while and explicit stack -----------------
+def kth_smallest(root, k):
+    stack = []
+    current = root
+
+    while stack or current:
+        while current:
+            stack.append(current)
+            current = current.left
+
+        current = stack.pop()
+        k -= 1
+
+        if k == 0:
+            return current.val
+
+        current = current.right
+
+    return None
+    
+# Complexity:
+# - Time: O(h + k) — we can stop after visiting the kth smallest element.
+# - Space: O(h) — the stack holds at most a tree-height-dependent number of nodes.
