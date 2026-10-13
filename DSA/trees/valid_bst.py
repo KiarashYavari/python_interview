@@ -19,5 +19,19 @@
 #   5
 # output: False
 def is_valid_bst(root):
-    # Your code
-    pass
+
+    def dfs(node, lower, upper):
+        if node is None:
+            return True
+
+        # Check whether node.val is within bounds
+
+        # Recursively validate left subtree
+        # with updated upper bound
+
+        # Recursively validate right subtree
+        # with updated lower bound
+
+        # Return True only if both are valid
+
+    return dfs(root, float("-inf"), float("inf"))
