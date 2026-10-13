@@ -55,7 +55,7 @@ def is_valid_bst(root):
         right_subtree = dfs(node.right, node.val, upper)
 
         # Return True only if both are valid
-        return left_subtree and right_subtree
+        return (left_subtree and right_subtree)
 
     return dfs(root, float("-inf"), float("inf"))
   
