@@ -17,14 +17,14 @@
 # Difficulty: Easy
 # You are given an undirected graph represented as an adjacency list and a starting node.
 # Implement a function that performs recursive Depth-First Search (DFS) and returns the nodes in the order they were first visited.
-graph = {
-    "A": ["B", "C"],
-    "B": ["A", "D", "E"],
-    "C": ["A", "F"],
-    "D": ["B"],
-    "E": ["B", "F"],
-    "F": ["C", "E"]
-}
+# graph = {
+#     "A": ["B", "C"],
+#     "B": ["A", "D", "E"],
+#     "C": ["A", "F"],
+#     "D": ["B"],
+#     "E": ["B", "F"],
+#     "F": ["C", "E"]
+# }
 
 start = "A"
 
@@ -44,7 +44,7 @@ def dfs_graph(graph, start):
     dfs(start)
     return result
 
-print(dfs_graph(graph, start))
+# print(dfs_graph(graph, start))
   
 # Complexity	Value	    Reason
 # Time	     (O(V+E))	  Each reachable vertex is visited once and its edges are examined
@@ -57,10 +57,38 @@ print(dfs_graph(graph, start))
 # A connected component is a group of vertices where every vertex can reach every other vertex in that group.
 # Problem statement
 # Given an undirected graph represented as an adjacency list, return the number of connected components.
+
+graph = {
+    "A": ["B"],
+    "B": ["A", "C"],
+    "C": ["B"],
+    "D": ["E"],
+    "E": ["D"]
+}
+
 def count_components(graph):
     visited = set()
     count = 0
 
-    # Your implementation
+    def dfs(node):
+      nonlocal visited
+      if node in visited:
+        return
 
+      visited.add(node)
+      
+      for neighbor in graph[node]:
+        dfs(neighbor)
+    
+    for key in graph.keys():
+      if key not in visited:
+        count += 1
+        dfs(key)
     return count
+
+print(count_components(graph))
+
+# Complexity Analysis
+# Complexity	Value	      Explanation
+# Time	      O(V + E)	  Every vertex is visited once, and every edge is examined
+# Space	      O(V)	      Visited set and recursion stack
