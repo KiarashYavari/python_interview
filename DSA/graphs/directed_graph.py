@@ -1,4 +1,4 @@
-# Topic: Directed Graphs and Topological Sorting
+# Topic: Directed Graphs
 # important difference between directed and undirected graphs!
 # In an undirected graph: A ─── B
 # You can travel both ways.
