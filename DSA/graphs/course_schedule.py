@@ -12,13 +12,13 @@
 # To take course a, you must first complete course b.
 # Return True if you can finish all courses. Otherwise, return False.
 
-numCourses = 4
+# numCourses = 4
 
-prerequisites = [
-    [1, 0],
-    [2, 1],
-    [3, 2]
-]
+# prerequisites = [
+#     [1, 0],
+#     [2, 1],
+#     [3, 2]
+# ]
 # graph = {0: [1], 1: [2], 2: [3], 3: []}
 
 def can_finish(numCourses: int, prerequisites: list[list[int]]) -> bool:
@@ -57,5 +57,16 @@ def can_finish(numCourses: int, prerequisites: list[list[int]]) -> bool:
     return True
         
     
-print(can_finish(numCourses, prerequisites))
+# print(can_finish(numCourses, prerequisites))
 
+# Complexity Analysis
+# Let:
+# - V = number of courses
+# - E = number of prerequisite pairs
+
+# Complexity	Value	    Explanation
+# Time	        O(V + E)	Each course and prerequisite edge is explored at most once
+# Space	        O(V + E)	Adjacency list, visited/path sets, and recursion stack
+
+
+# This is the optimal asymptotic complexity for Course Schedule.
