@@ -68,5 +68,51 @@ def can_finish(numCourses: int, prerequisites: list[list[int]]) -> bool:
 # Time	        O(V + E)	Each course and prerequisite edge is explored at most once
 # Space	        O(V + E)	Adjacency list, visited/path sets, and recursion stack
 
-
 # This is the optimal asymptotic complexity for Course Schedule.
+
+# ********************************************************
+# ********************************************************
+
+# Exercise: Course Schedule II (LeetCode 210)
+# You've now learned how to determine whether a directed graph contains a cycle.
+
+# Let's take that one step further.
+
+# In Course Schedule I, we only returned:
+# True  # Can finish all courses
+# False # Cannot finish all courses
+
+# But what if the interviewer asks:
+# "In what order should the student take the courses?"
+# That's where Topological Sorting comes in.
+
+# Topological sorting:
+
+# Problem Statement
+# Given numCourses and prerequisites, return a valid ordering of all courses.
+# If completing all courses is impossible, return an empty list.
+
+# Example
+# numCourses = 4
+
+# prerequisites = [
+#     [1, 0],
+#     [2, 0],
+#     [3, 1],
+#     [3, 2]
+# ]
+
+#    0
+#   / \
+#  v   v
+#  1   2
+#   \ /
+#    v
+#    3
+
+# Possible valid outputs: [0, 1, 2, 3] or [0, 2, 1, 3] 
+# Both are valid because course 3 requires completing both 1 and 2.
+
+def find_order(numCourses: int, prerequisites: list[list[int]]) -> list[int]:
+    # Your implementation
+    pass
