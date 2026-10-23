@@ -113,6 +113,47 @@ def can_finish(numCourses: int, prerequisites: list[list[int]]) -> bool:
 # Possible valid outputs: [0, 1, 2, 3] or [0, 2, 1, 3] 
 # Both are valid because course 3 requires completing both 1 and 2.
 
+numCourses = 4
+
+prerequisites = [
+    [1, 0],
+    [2, 0],
+    [3, 1],
+    [3, 2]
+]
+
 def find_order(numCourses: int, prerequisites: list[list[int]]) -> list[int]:
-    # Your implementation
-    pass
+    graph = {num: [] for num in range(numCourses)}
+    for course, pre in prerequisites:
+        graph[pre].append(course)
+    # print(graph)
+    path = set()
+    visited = set()
+    course_order = []
+    def dfs(node):
+        if node in path: # there is a cycle
+            return True
+            
+        if node in visited: # no cycle
+            return False
+
+        path.add(node)
+        for neighbor in graph[node]:
+            if dfs(neighbor):
+                return True
+        
+        visited.add(node)
+        path.remove(node)
+        course_order.append(node)
+        return False
+    
+    for node in graph:
+        if node not in visited:
+            if dfs(node):
+                return []
+                
+    course_order.reverse()        
+    return course_order
+
+print(find_order(numCourses, prerequisites))
+
