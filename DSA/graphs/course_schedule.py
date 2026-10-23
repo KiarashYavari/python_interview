@@ -157,3 +157,11 @@ def find_order(numCourses: int, prerequisites: list[list[int]]) -> list[int]:
 
 print(find_order(numCourses, prerequisites))
 
+# Complexity Analysis
+# Let V represent the number of courses and E the number of prerequisites.
+# Operation	            Complexity
+# Build adjacency list	O(V + E)
+# DFS traversal	        O(V + E)
+# Reverse result	    O(V)
+# Total time	        O(V + E)
+# Total space	        O(V + E)
