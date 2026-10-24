@@ -114,3 +114,66 @@ if new_distance < distances[neighbor]:
     
 # If we've found a shorter route, we update the distance.
 # This is the central operation in Dijkstra's algorithm.
+
+# ****************************************************
+# ****************************************************
+
+# Interview Exercise: Implement Dijkstra's Algorithm
+# Difficulty: Medium
+# Pattern: Graph + Min-Heap + Greedy Algorithm
+# Problem Statement
+# Given a directed weighted graph and a starting node, return a dictionary containing the shortest distance from the starting node to every node.
+
+# All edge weights are non-negative.
+# Example input:
+graph = {
+    "A": [("B", 2), ("C", 5)],
+    "B": [("D", 4), ("E", 1)],
+    "C": [("E", 3)],
+    "D": [("F", 2)],
+    "E": [("F", 1)],
+    "F": []
+}
+
+start = "A"
+
+# expected output: 
+{
+    "A": 0,
+    "B": 2,
+    "C": 5,
+    "D": 6,
+    "E": 3,
+    "F": 4
+}
+
+# Complete the following function:
+import heapq
+
+def dijkstra(graph, start):
+    # Initialize distances
+    distances = {
+        node: float("inf")
+        for node in graph
+    }
+
+    distances[start] = 0
+
+    # Initialize min-heap
+    min_heap = [(0, start)]
+
+    while min_heap:
+        # 1. Pop node with smallest distance
+
+        # 2. Skip outdated heap entries
+
+        # 3. Explore neighbors
+
+        # 4. Calculate new distances
+
+        # 5. Update shorter distances
+        #    and push them into the heap
+
+        pass
+
+    return distances
