@@ -99,18 +99,18 @@ heapq.heappush(heap, (0, "A"))
 # In Dijkstra's algorithm, we repeatedly perform an operation called edge relaxation.
 
 # Suppose: 
-current_distance = 2
-weight = 1
+# current_distance = 2
+# weight = 1
 
 # We calculate:
-new_distance = current_distance + weight
+# new_distance = current_distance + weight
 
 # So:
-new_distance = 3
+# new_distance = 3
 
 # Now we compare it against the previously known distance:
-if new_distance < distances[neighbor]:
-    distances[neighbor] = new_distance
+# if new_distance < distances[neighbor]:
+#     distances[neighbor] = new_distance
     
 # If we've found a shorter route, we update the distance.
 # This is the central operation in Dijkstra's algorithm.
@@ -164,16 +164,24 @@ def dijkstra(graph, start):
 
     while min_heap:
         # 1. Pop node with smallest distance
-
+        distance, node = heapq.heappop(min_heap)
+        
         # 2. Skip outdated heap entries
-
+        if distance > distances[node]:
+            continue
+        
         # 3. Explore neighbors
+        for neighbor, weight in graph[node]:
+            # 4. Calculate new distances
+            new_distance = weight + distance
+            
+            if new_distance < distances[neighbor]:
+                # 5. Update shorter distances
+                distances[neighbor] = new_distance
+                # and push them into the heap
+                heapq.heappush(min_heap, (new_distance, neighbor))
 
-        # 4. Calculate new distances
-
-        # 5. Update shorter distances
-        #    and push them into the heap
-
-        pass
 
     return distances
+
+print(dijkstra(graph, start))
