@@ -185,3 +185,47 @@ def dijkstra(graph, start):
     return distances
 
 print(dijkstra(graph, start))
+
+# Consider:
+# min_heap = [
+#     (5, "C"),
+#     (10, "C")
+# # ]
+# Both entries refer to the same node.
+
+# When we pop: 
+# distance, node = heapq.heappop(min_heap)
+
+# we get: distance = 5 , node = "C"
+
+# Later, we pop: distance = 10 , node = "C"
+
+# But >>> distances["C"] == 5
+
+# therefore:
+# if distance > distances[node]:
+    # continue
+
+# This optimization avoids processing obsolete entries.
+
+# Notice that we don't need to remove the outdated entry manually.
+
+# This approach is sometimes called lazy deletion.
+
+# Complexity Analysis
+# Let:
+# - V = number of vertices
+# - E = number of edges
+# Using an adjacency list and Python's heapq:
+
+# Operation	                Complexity
+# Initialize distances	    O(V)
+# Pop minimum from heap	    O(log(V + E)) per pop
+# Explore all edges	        O(E) total
+# Push improved distances	O(log(V + E)) per push
+# Total time	            O(V + E log(V + E))
+# Total space	            O(V + E)
+
+
+# The time complexity is commonly written as:
+# [O((V+E)\log V)}]
