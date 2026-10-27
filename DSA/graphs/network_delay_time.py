@@ -72,3 +72,12 @@ def network_delay_time(times: list[list[int]], n: int, k: int) -> int:
       max_dist = v
 
   return max_dist
+
+# print(network_delay_time(times, n, k))
+
+# Complexity
+# Metric	Complexity
+# Time	    O(V + E log(V + E))
+# Space	    O(V + E)
+
+# For a simple graph, time is commonly expressed as (O((V+E)\log V)).
