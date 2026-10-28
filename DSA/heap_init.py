@@ -34,3 +34,30 @@ max_heap = [-num for num in nums]
 heapq.heapify(max_heap)
 
 print(-heapq.heappop(max_heap))  # 7
+# ----------------------------------
+# ----------------------------------
+# Problem: Kth Largest Element in an Array (LeetCode 215)
+
+# Given an integer array nums and an integer k, return the kth largest element.
+# Example
+nums = [3, 2, 1, 5, 6, 4]
+k = 2
+
+# Output: 5
+# task: Solve this using a min-heap of size k, without sorting the entire array.
+import heapq
+import heapq
+
+def find_kth_largest(nums: list[int], k: int) -> int:
+    heap = []
+
+    for num in nums:
+        # Push num into heap
+
+        # If heap has more than k elements,
+        # remove the smallest
+
+    # Return kth largest
+
+# print(find_kth_largest(nums, k))
+  
