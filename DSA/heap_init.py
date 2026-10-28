@@ -39,6 +39,8 @@ print(-heapq.heappop(max_heap))  # 7
 # Problem: Kth Largest Element in an Array (LeetCode 215)
 
 # Given an integer array nums and an integer k, return the kth largest element.
+# One assumption: 1 <= k <= len(nums)
+
 # Example
 nums = [3, 2, 1, 5, 6, 4]
 k = 2
@@ -63,4 +65,12 @@ def find_kth_largest(nums: list[int], k: int) -> int:
     return heap[0]
 
 # print(find_kth_largest(nums, k))
+
+# Complexity Analysis
+# Let n be the number of elements.
+# Metric	Complexity
+# Time	    O(n log k)
+# Space	    O(k)
+
+# This is especially useful when k is much smaller than n.
   
