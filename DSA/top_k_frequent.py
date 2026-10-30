@@ -22,19 +22,29 @@ k = 2
 
 # Use a dictionary to count frequencies and a min-heap of size k to find the most frequent elements.
 import heapq
+from collections import defaultdict
 
 def top_k_frequent(nums: list[int], k: int) -> list[int]:
-    frequency = {}
+    frequency = defaultdict(int)
 
     # Step 1: Count each number's frequency
-
-
+    for num in nums:
+      frequency[num] += 1
+    print(frequency)
+        
     heap = []
 
     # Step 2: Push (frequency, number)
     # into the min-heap
-    
+    for num, freq in frequency.items():
+      heapq.heappush(heap, (freq, num))
     # Step 3: Keep heap size <= k
+      if len(heap) > k:
+        heapq.heappop(heap)
 
     # Step 4: Return the numbers
     # from the heap
+    # print(heap)
+    return [num for freq, num in heap]
+
+print(top_k_frequent(nums, k))
