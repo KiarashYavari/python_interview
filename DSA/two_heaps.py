@@ -22,7 +22,6 @@
 # We need two methods:
 # - addNum(num) — Insert a number and rebalance the heaps.
 # - findMedian() — Return the median.
-
 import heapq
 
 class MedianFinder:
@@ -31,16 +30,31 @@ class MedianFinder:
         self.large = []  # Min-heap
 
     def addNum(self, num: int) -> None:
-        # Step 1: Insert into the appropriate heap
+        # Step 1: Insert into small
+        heapq.heappush(self.small, -num)
 
-        # Step 2: Ensure max(small) <= min(large)
+        # Step 2: Move largest from small to large
+        value = -heapq.heappop(self.small)
+        heapq.heappush(self.large, value)
 
-        # Step 3: Balance heap sizes
-
+        # Step 3: Balance sizes
+        if len(self.large) > len(self.small) + 1:
+            value = heapq.heappop(self.large)
+            heapq.heappush(self.small, -value)
 
     def findMedian(self) -> float:
-        # If one heap has more elements,
-        # return its root
+        if len(self.large) > len(self.small):
+            return self.large[0]
 
-        # Otherwise, return average of both roots
+        return (-self.small[0] + self.large[0]) / 2
 
+
+m_finder = MedianFinder()
+
+for num in range(1, 6):
+    m_finder.addNum(num)
+    print(f"add {num}")
+    print("small:", m_finder.small)
+    print("large:", m_finder.large)
+
+print("Median:", m_finder.findMedian())
