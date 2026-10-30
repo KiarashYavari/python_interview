@@ -58,3 +58,8 @@ for num in range(1, 6):
     print("large:", m_finder.large)
 
 print("Median:", m_finder.findMedian())
+
+# Complexity
+# Operation	    Time	    Space
+# addNum()	    O(log n)	O(n) overall
+# findMedian()	O(1)	    O(1) extra
