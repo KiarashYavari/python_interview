@@ -47,4 +47,16 @@ def top_k_frequent(nums: list[int], k: int) -> list[int]:
     # print(heap)
     return [num for freq, num in heap]
 
+# print(top_k_frequent(nums, k))
+
+# Complexity
+# Let n be the number of input elements and m the number of unique elements.
+# Operation	                Complexity
+# Frequency counting	    O(n)
+# Heap operations	        O(m log k)
+# Total time	            O(n + m log k)
+# Total space	            O(m + k)
+
+Since m <= n, the time complexity is also bounded by O(n log k).
+
 print(top_k_frequent(nums, k))
