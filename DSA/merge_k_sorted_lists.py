@@ -10,3 +10,37 @@
 
 # expected results: 1 -> 1 -> 2 -> 3 -> 4 -> 4 -> 5 -> 6
 # Each linked list is already sorted. Therefore, we only need to compare the first available node from each list.
+
+import heapq
+
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+
+def merge_k_lists(lists: list[ListNode]) -> ListNode:
+    heap = []
+
+    # Step 1: Push the first node of
+    # every non-empty list into the heap
+    for i ,l_list in enumerate(lists):
+      if l_list:
+        heapq.heappush(heap, (l_list.val, i, l_list))
+
+    dummy = ListNode(0)
+    current = dummy
+
+    # Step 2: While the heap isn't empty:
+    while heap:
+      # - Pop smallest node
+      node_val, index, node = heapq.heappop(heap)
+      # - Attach it to current.next
+      current.next = node
+      # - Move current forward
+      current = current.next
+      # - Push popped node's next, if any
+      if current.next:
+        heapq.heappush(heap, (current.next.val, index, current.next)
+
+    return dummy.next
