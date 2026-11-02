@@ -17,6 +17,20 @@ class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
+        
+node1 = ListNode(1)
+node2 = ListNode(2)
+node3 = ListNode(3)
+
+node1.next = node2
+node2.next = node3
+
+node4 = ListNode(1)
+node5 = ListNode(3)
+node6 = ListNode(4)
+
+node4.next = node5
+node5.next = node6
 
 
 def merge_k_lists(lists: list[ListNode]) -> ListNode:
@@ -35,12 +49,27 @@ def merge_k_lists(lists: list[ListNode]) -> ListNode:
     while heap:
       # - Pop smallest node
       node_val, index, node = heapq.heappop(heap)
+      # print(f"popped node is: {node_val}, {index}")
       # - Attach it to current.next
       current.next = node
       # - Move current forward
       current = current.next
       # - Push popped node's next, if any
       if current.next:
-        heapq.heappush(heap, (current.next.val, index, current.next)
+        heapq.heappush(heap, (current.next.val, index, current.next))
 
     return dummy.next
+  
+def print_linked_list(head):
+    values = []
+
+    while head:
+        values.append(head.val)
+        head = head.next
+
+    print(" → ".join(map(str, values)))
+
+
+result = merge_k_lists([node1, node4])
+
+print_linked_list(result)
