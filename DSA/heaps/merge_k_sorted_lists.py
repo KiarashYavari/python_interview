@@ -73,3 +73,15 @@ def print_linked_list(head):
 result = merge_k_lists([node1, node4])
 
 print_linked_list(result)
+
+# Complexity analysis
+# Let:
+# - N = total number of nodes across all lists.
+# - k = number of linked lists.
+
+# | Operation               | Complexity |
+# |--------                 |--------|
+# | Build initial heap      | O(k log k) using repeated pushes |
+# | Pop and push nodes      | O(N log k) |
+# | Total time              | **O(N log k)** |
+# | Auxiliary space         | **O(k)** |
