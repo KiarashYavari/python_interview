@@ -55,4 +55,30 @@ def k_closest(points: list[list[int]], k: int) -> list[list[int]]:
 # Auxiliary space	    O(n)
 
 # reduce the time to O(n log k):
+def k_closest(points: list[list[int]], k: int) -> list[list[int]]:
 
+    # take a  max heap 
+    # iterate over points and get x, y
+    heap = []
+    for point in points:
+      x, y = point
+      # push them into heap, use distance comparison
+      distance = (x*x) + (y*y)
+      heapq.heappush(heap, (-distance,x,y))
+
+      # if we exceed k elements remove the largest distance
+      if len(heap) > k:
+        heapq.heappop(heap)
+      
+    return [[x,y] for _, x, y in heap]
+
+# Notice two important changes:
+# 1. -distance ensures the farthest point is at the top of the heap.
+# 2. if len(heap) > k removes that farthest point.
+
+#                     first solution	    Optimized
+# Heap size	            Up to n	            Up to k + 1
+# Insertion cost	    O(log n)	         O(log k)
+# Number of points	    n	                   n
+# Total time	        O(n log n)	        O(n log k)
+# Auxiliary space	    O(n)	              O(k)
