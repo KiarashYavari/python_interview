@@ -10,8 +10,8 @@
 
 # Example 1
 # Input:
-points = [[1, 3], [-2, 2]]
-k = 1
+# points = [[1, 3], [-2, 2]]
+# k = 1
 # expected output: [[-2, 2]]
 
 # Example 2
@@ -20,6 +20,28 @@ points = [[3, 3], [5, -1], [-2, 4]]
 k = 2
 # expected output: [[3, 3], [-2, 4]]
 
+import heapq
+
 def k_closest(points: list[list[int]], k: int) -> list[list[int]]:
-    pass
-  
+
+    # take a heap 
+    # iterate over points and get x, y
+    heap = []
+    for point in points:
+      x, y = point
+      # push them into heap, use distance comparison
+      distance = (x*x) + (y*y)
+      heapq.heappush(heap, (distance,x,y))
+
+    # take a result list
+    result = []
+    # while result lenght is less than k
+    while len(result) < k:
+      distance,x,y = heapq.heappop(heap)
+      # pop from heap and push into results
+      result.append([x,y])
+      
+    return result
+
+# print(k_closest(points, k))
+
