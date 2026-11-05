@@ -45,3 +45,14 @@ def k_closest(points: list[list[int]], k: int) -> list[list[int]]:
 
 # print(k_closest(points, k))
 
+# Complexity analysis
+# Let n be the number of points.
+    
+# Operation	            Time
+# Push n points	        O(n log n)
+# Pop k points	        O(k log n)
+# Total	                O(n log n)
+# Auxiliary space	    O(n)
+
+# reduce the time to O(n log k):
+
